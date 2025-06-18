@@ -1,7 +1,7 @@
 # ICDE26 PIMGT
 Artifacts for Proceedings of ICDE Endowment 2026
 
-## Half-Division (DRS)
+## Dense Region Scattering (DRS)
 
 ### Datasets
 You can download the used datasets with "get_datasets.sh"
