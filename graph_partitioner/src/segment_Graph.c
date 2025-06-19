@@ -108,6 +108,11 @@ int main(int argc, char** argv) {
 	total_ICN = find_ICN(mat, num_ICNs);
 	check_balance(mat, total_ICN, num_ICNs);
 	if (write_to_file) write_to_storage(mat, target, argv[1], "fsm");
+#elif KAHIP
+	exec_KaHIP(argv[1], target, mat);
+	total_ICN = find_ICN(mat, num_ICNs);
+	check_balance(mat, total_ICN, num_ICNs);
+	if (write_to_file) write_to_storage(mat, target, argv[1], "kahip");
 #elif HDV
 	refine mode = BALANCE_ADJUSTMENT;
 	if (argc == 4) mode = atoi(argv[3]);
@@ -124,74 +129,80 @@ int main(int argc, char** argv) {
 	ptr = strtok(NULL, ".");
 	perf = fopen("./performance.csv", "at");
 	fprintf(perf, "%s,", ptr);
-	fclose(perf);
 
 	
-	exec_METIS(argv[1], target, mat);
-	puts("METIS.");
-	fprintf(fp, "%s,METIS,", ptr);
-	total_ICN = find_ICN(mat, num_ICNs);
-	check_balance(mat, total_ICN, num_ICNs);
-	if (write_to_file) write_to_storage(mat, target, argv[1], "metis");
+	// exec_METIS(argv[1], target, mat);
+	// puts("METIS.");
+	// fprintf(fp, "%s,METIS,", ptr);
+	// total_ICN = find_ICN(mat, num_ICNs);
+	// check_balance(mat, total_ICN, num_ICNs);
+	// if (write_to_file) write_to_storage(mat, target, argv[1], "metis");
 
-	exec_BPart(argv[1], target, mat);
-	puts("BPart.");
-	fprintf(fp, ",BPart,");
-	total_ICN = find_ICN(mat, num_ICNs);
-	check_balance(mat, total_ICN, num_ICNs);
-	if (write_to_file) write_to_storage(mat, target, argv[1], "bpart");
+	// puts("KaHIP.");
+	// exec_KaHIP(argv[1], target, mat);
+	// fprintf(fp, ",KaHIP,");
+	// total_ICN = find_ICN(mat, num_ICNs);
+	// check_balance(mat, total_ICN, num_ICNs);
+	// if (write_to_file) write_to_storage(mat, target, argv[1], "kahip");
 
-	exec_Fennel(argv[1], target, mat);
-	puts("Fennel.");
-	fprintf(fp, ",Fennel,");
-	total_ICN = find_ICN(mat, num_ICNs);
-	check_balance(mat, total_ICN, num_ICNs);
-	if (write_to_file) write_to_storage(mat, target, argv[1], "fennel");
+	// exec_BPart(argv[1], target, mat);
+	// puts("BPart.");
+	// fprintf(fp, ",BPart,");
+	// total_ICN = find_ICN(mat, num_ICNs);
+	// check_balance(mat, total_ICN, num_ICNs);
+	// if (write_to_file) write_to_storage(mat, target, argv[1], "bpart");
 
-	exec_NE(argv[1], target, mat);
-	puts("NE.");
-	fprintf(fp, ",NE,");
-	total_ICN = find_ICN(mat, num_ICNs);
-	check_balance(mat, total_ICN, num_ICNs);
-	if (write_to_file) write_to_storage(mat, target, argv[1], "ne");
+	// exec_Fennel(argv[1], target, mat);
+	// puts("Fennel.");
+	// fprintf(fp, ",Fennel,");
+	// total_ICN = find_ICN(mat, num_ICNs);
+	// check_balance(mat, total_ICN, num_ICNs);
+	// if (write_to_file) write_to_storage(mat, target, argv[1], "fennel");
 
-	exec_TopoX(argv[1], target, mat);
-	puts("TopoX.");
-	fprintf(fp, ",TopoX,");
-	total_ICN = find_ICN(mat, num_ICNs);
-	check_balance(mat, total_ICN, num_ICNs);
-	if (write_to_file) write_to_storage(mat, target, argv[1], "topox");
+	// puts("NE.");
+	// exec_NE(argv[1], target, mat);
+	// fprintf(fp, ",NE,");
+	// total_ICN = find_ICN(mat, num_ICNs);
+	// check_balance(mat, total_ICN, num_ICNs);
+	// if (write_to_file) write_to_storage(mat, target, argv[1], "ne");
 
-	exec_HEP(argv[1], target, mat);
-	puts("HEP.");
-	fprintf(fp, ",HEP,");
-	total_ICN = find_ICN(mat, num_ICNs);
-	check_balance(mat, total_ICN, num_ICNs);
-	if (write_to_file) write_to_storage(mat, target, argv[1], "hep");
+	// puts("TopoX.");
+	// exec_TopoX(argv[1], target, mat);
+	// fprintf(fp, ",TopoX,");
+	// total_ICN = find_ICN(mat, num_ICNs);
+	// check_balance(mat, total_ICN, num_ICNs);
+	// if (write_to_file) write_to_storage(mat, target, argv[1], "topox");
 
-	exec_FSM(argv[1], target, mat);
-	puts("FSM.");
-	fprintf(fp, ",FSM,");
-	total_ICN = find_ICN(mat, num_ICNs);
-	check_balance(mat, total_ICN, num_ICNs);
-	if (write_to_file) write_to_storage(mat, target, argv[1], "fsm");
+	// puts("HEP.");
+	// exec_HEP(argv[1], target, mat);
+	// fprintf(fp, ",HEP,");
+	// total_ICN = find_ICN(mat, num_ICNs);
+	// check_balance(mat, total_ICN, num_ICNs);
+	// if (write_to_file) write_to_storage(mat, target, argv[1], "hep");
 
-	puts("HDV.");
-	fprintf(fp, ",HDV,");
-	target = half_Division(inc_mat, target, NO_ADJUSTMENT);
-	total_ICN = find_ICN(mat, num_ICNs);
-	check_balance(mat, total_ICN, num_ICNs);
-	if (write_to_file) write_to_storage(mat, target, argv[1], "hdv");
+	// puts("FSM.");
+	// exec_FSM(argv[1], target, mat);
+	// fprintf(fp, ",FSM,");
+	// total_ICN = find_ICN(mat, num_ICNs);
+	// check_balance(mat, total_ICN, num_ICNs);
+	// if (write_to_file) write_to_storage(mat, target, argv[1], "fsm");
 
-	puts("HDV+A.");
-	fprintf(fp, ",HDV+A,");
-	target = half_Division(inc_mat, target, ICN_ADJUSTMENT);
-	total_ICN = find_ICN(mat, num_ICNs);
-	check_balance(mat, total_ICN, num_ICNs);
-	if (write_to_file) write_to_storage(mat, target, argv[1], "hdv+a");
+	// puts("DRS.");
+	// fprintf(fp, ",DRS,");
+	// target = half_Division(inc_mat, target, NO_ADJUSTMENT);
+	// total_ICN = find_ICN(mat, num_ICNs);
+	// check_balance(mat, total_ICN, num_ICNs);
+	// if (write_to_file) write_to_storage(mat, target, argv[1], "hdv");
 
-	puts("HDV+A+B.");
-	fprintf(fp, ",HDV+A+B,");
+	// puts("DRS+A.");
+	// fprintf(fp, ",DRS+A,");
+	// target = half_Division(inc_mat, target, ICN_ADJUSTMENT);
+	// total_ICN = find_ICN(mat, num_ICNs);
+	// check_balance(mat, total_ICN, num_ICNs);
+	// if (write_to_file) write_to_storage(mat, target, argv[1], "hdv+a");
+
+	puts("DRS+A+B.");
+	fprintf(fp, ",DRS+A+B,");
 	target = half_Division(inc_mat, target, BALANCE_ADJUSTMENT);
 	total_ICN = find_ICN(mat, num_ICNs);
 	check_balance(mat, total_ICN, num_ICNs);
@@ -199,6 +210,7 @@ int main(int argc, char** argv) {
 	puts("=========================================================================================================\n");
 
 	fclose(fp);
+	fclose(perf);
 #endif
 
 	
