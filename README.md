@@ -1,5 +1,5 @@
 # ICDE26 PIMGT
-Artifacts for Proceedings of ICDE Endowment 2026
+Artifacts for Proceedings of ICDE 2026
 
 ## Dense Region Scattering (DRS)
 
