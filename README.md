@@ -16,6 +16,8 @@ We provide an object file and some source code files written by C.
 
 You can generate the executable files with "graph_partitioner/Makefile".
 ```
+ICDE26_PIMGT/graph_partitioner$ mkdir obj
+ICDE26_PIMGT/graph_partitioner$ mkdir bin
 ICDE26_PIMGT/graph_partitioner$ make	  	// generates all executables
 ICDE26_PIMGT/graph_partitioner$ make base	// generates all baselines
 ```
