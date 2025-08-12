@@ -11,7 +11,7 @@ ICDE26_PIMGT/graph_partitioner$ sh get_datasets.sh
 ```
 
 ### Compilation
-The source codes of Half-Division in PimGT are included in "graph_partitioner/src" directory.
+The source codes of Dense Region Scattering in PimGT are included in "graph_partitioner/src" directory.
 We provide an object file and some source code files written by C.
 
 You can generate the executable files with "graph_partitioner/Makefile".
